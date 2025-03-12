@@ -9,7 +9,10 @@ import Products from './components/Products';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ErrorBoundary from './components/ErrorBoundary'; // Adjust the path as necessary
 
+console.log("app.js imported")
+
 export default function App() {
+    console.log('app')
     return (
         <Router>
             <div className='page'>

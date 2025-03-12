@@ -1,30 +1,31 @@
 import React from 'react';
-import Carousel from 'react-bootstrap/Carousel'
-const ImgCarousel = (props) => {
-    var sneaker = props.sneaker;
+import Carousel from 'react-bootstrap/Carousel';
 
-    const images = () =>{
-        if(sneaker?.imageLinks.length > 0){
+const ImgCarousel = ({ sneaker, imageClass, image }) => {
+    // Function to generate carousel items
+    const generateCarouselItems = () => {
+        // Check if sneaker has image links and they are not empty
+        if (sneaker?.imageLinks?.length > 0) {
+            return sneaker.imageLinks.map((imageLink, index) => (
+                <Carousel.Item key={index}>
+                    <img className='goat-images' src={imageLink} alt={`Sneaker Image ${index}`} />
+                </Carousel.Item>
+            ));
+        } else {
+            // Fallback image if no image links are provided
             return (
-                sneaker.imageLinks.map(image=>(
-                <Carousel.Item>
-                    <img className='goat-images' src={image}></img>
+                <Carousel.Item key="fallback">
+                    <img className={imageClass} src={image} alt="Fallback Sneaker Image" />
                 </Carousel.Item>
-            )));}
-        else{
-            console.log(props);
-            return(
-                <Carousel.Item>
-                    <img className={props.imageClass} src={props.image}></img>
-                </Carousel.Item>
-            )
+            );
         }
-    }
-    
-    return(
+    };
+
+    return (
         <Carousel>
-            {images()}
+            {generateCarouselItems()}
         </Carousel>
     );
-}
-export default ImgCarousel
+};
+
+export default ImgCarousel;
