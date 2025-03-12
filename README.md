@@ -1,5 +1,6 @@
 
 # The Sneaks App
+![image](image.png)
 
 ## Overview
 
